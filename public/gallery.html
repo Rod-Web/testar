@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Usuários</title>
+    <link rel="stylesheet" href="/galery.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Galeria de Usuários</h1>
+        <div class="gallery" id="gallery">
+            <!-- A galeria será preenchida dinamicamente via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Função para obter as imagens dos usuários do servidor
+        fetch('/images')
+            .then(response => response.json())
+            .then(users => {
+                const gallery = document.getElementById('gallery');
+                users.forEach(user => {
+                    const userCard = document.createElement('div');
+                    userCard.classList.add('user-card');
+
+                    userCard.innerHTML = `
+                        <img src="${user.image}" alt="${user.username}">
+                        <div class="username">${user.username}</div>
+                        <div class="user-status">Status: ${user.image ? 'Imagem enviada' : 'Aguardando envio'}</div>
+                    `;
+
+                    gallery.appendChild(userCard);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar usuários:', error));
+    </script>
+</body>
+</html>

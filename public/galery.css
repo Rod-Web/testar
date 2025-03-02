@@ -1,0 +1,122 @@
+/* Estilo geral para garantir que o body e html ocupem toda a tela */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* A container que envolve o conteúdo */
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  /* Galeria usando Grid para exibir 4 imagens por linha */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* Cria 4 colunas */
+    gap: 20px;  /* Espaçamento entre as imagens */
+    margin-top: 20px;
+    max-height: 80vh; /* A galeria vai ocupar até 80% da altura da tela */
+    overflow-y: auto; /* Rolagem vertical para ver mais linhas */
+    width: 100%;
+  }
+  
+  /* Estilo para cada card de usuário, em formato RG */
+  .user-card {
+    background: #7c7c7c;
+    border-radius: 12px;  /* Bordas arredondadas para dar o formato RG */
+    width: 230px;  /* Largura fixa do card */
+    height: 350px;  /* Altura fixa do card para dar o formato vertical */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .user-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  }
+  
+  .user-card img {
+    width: 100%;
+    height: 200px;  /* A imagem ocupa 200px de altura, respeitando o formato do card */
+    object-fit: cover;
+    border-radius: 10px;  /* Bordas arredondadas para as imagens também */
+    transition: transform 0.3s ease;
+  }
+  
+  .user-card img:hover {
+    transform: scale(1.05);
+  }
+  
+  .user-card .username {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+  }
+  
+  .user-card .username:hover {
+    color: #2575fc;
+  }
+  
+  .user-card .user-status {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #777;
+    font-weight: 500;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 1024px) {
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);  /* 3 imagens por linha em telas menores */
+    }
+  
+    .user-card {
+      width: 200px;  /* Ajusta o card para telas menores */
+      height: 300px;  /* Ajusta a altura do card */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);  /* 2 imagens por linha em telas menores */
+    }
+  
+    .user-card {
+      width: 180px;  /* Ajusta o card para telas de 768px */
+      height: 280px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: 1fr;  /* 1 imagem por linha em telas pequenas */
+    }
+  
+    .user-card {
+      width: 150px;  /* Ajusta o card para telas pequenas */
+      height: 250px;
+    }
+  }
+  

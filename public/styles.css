@@ -1,0 +1,135 @@
+/* Reset e estilo geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1rem;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Container principal */
+.container {
+  width: 100%;
+  max-width: 550px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  text-align: center;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: translateY(-10px);
+}
+
+/* Títulos principais */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Formulário de inputs */
+input[type="text"],
+input[type="password"],
+input[type="file"],
+button {
+  width: 100%;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  border: 2px solid #ddd;
+  background: #f7f9fc;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus {
+  border-color: #2575fc;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(37, 117, 252, 0.2);
+}
+
+/* Botão */
+button {
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #6a11cb;
+}
+
+button:active {
+  background-color: #4d90f0;
+}
+
+/* Links */
+a {
+  color: #2575fc;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #6a11cb;
+}
+
+/* Estilo de imagem da galeria */
+
+/* Animações */
+@keyframes bounce {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.uploading p {
+  animation: bounce 1.5s infinite ease-in-out;
+  font-size: 1.2rem;
+  color: #2575fc;
+  font-weight: bold;
+}
+
+/* Estilo para a página de erro */
+.error-message {
+  color: #ff4081;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}

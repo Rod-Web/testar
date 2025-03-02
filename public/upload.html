@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Enviar Imagem</title>
+</head>
+<body>
+  <h1>Enviar Imagem</h1>
+  <form id="uploadForm">
+    <input type="file" id="image" required>
+    <button type="submit">Enviar</button>
+  </form>
+  <script>
+    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let formData = new FormData();
+      formData.append("image", document.getElementById("image").files[0]);
+
+      let response = await fetch("/upload", {
+        method: "POST",
+        headers: { "Authorization": "Bearer " + localStorage.getItem("token") },
+        body: formData
+      });
+
+      let data = await response.json();
+      if (response.ok) {
+        window.location.href = data.redirect;
+      } else {
+        alert(data.message);
+      }
+    });
+  </script>
+</body>
+</html>

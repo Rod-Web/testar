@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Usuário" required>
+    <input type="password" id="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+  </form>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+
+      let response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      let data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        window.location.href = data.redirect;
+      } else {
+        alert(data.message);
+      }
+    });
+  </script>
+</body>
+</html>
